@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "598376613124",
+    "project_id": "skill-nest-dfb7f",
+    "storage_bucket": "skill-nest-dfb7f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598376613124:android:59aa3b1fc5986d8288fc51",
+        "android_client_info": {
+          "package_name": "com.example.skillnest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa32d9T1KA3OaZanHiAqYifnOhafril0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
