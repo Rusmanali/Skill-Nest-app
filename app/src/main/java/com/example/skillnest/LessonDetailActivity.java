@@ -8,6 +8,10 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +31,31 @@ public class LessonDetailActivity extends AppCompatActivity {
 
     private String currentLessonTitle;
     private String currentCategory;
+
+    private final Map<String, List<String>> categoryLessons = new HashMap<String, List<String>>() {{
+        put("Mobile Development", Arrays.asList(
+            "Introduction to Android Development",
+            "Activities and App Navigation",
+            "User Interface Design",
+            "RecyclerView and Lists"
+        ));
+        put("Web Development", Arrays.asList(
+            "Introduction to Web Development",
+            "HTML Fundamentals",
+            "CSS Styling and Responsive Design",
+            "JavaScript Basics and DOM Manipulation"
+        ));
+        put("UI/UX Design", Arrays.asList(
+            "Introduction to UI/UX Design",
+            "Wireframing and Prototyping",
+            "Visual Design and Design Systems",
+            "Usability Testing and Design Handoff"
+        ));
+        put("AI & ML", Arrays.asList(
+            "Introduction to AI and Machine Learning",
+            "Building Your First ML Model"
+        ));
+    }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +89,7 @@ public class LessonDetailActivity extends AppCompatActivity {
         if (btnBack != null) btnBack.setOnClickListener(v -> finish());
         
         if (btnNext != null) {
-            btnNext.setOnClickListener(v -> {
-                Intent intent = new Intent(this, QuizActivity.class);
-                startActivity(intent);
-            });
+            setupNextButton();
         }
 
         if (btnMarkDone != null) {
@@ -78,6 +104,42 @@ public class LessonDetailActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void setupNextButton() {
+        if (btnNext == null || currentCategory == null || currentLessonTitle == null) return;
+
+        List<String> lessons = categoryLessons.get(currentCategory);
+        if (lessons == null) {
+            // Fallback to quiz if category not found in map
+            btnNext.setText("Start Quiz");
+            btnNext.setOnClickListener(v -> startQuiz());
+            return;
+        }
+
+        int currentIndex = lessons.indexOf(currentLessonTitle);
+        if (currentIndex != -1 && currentIndex < lessons.size() - 1) {
+            // There is a next lesson
+            String nextLessonTitle = lessons.get(currentIndex + 1);
+            btnNext.setText("Next Lesson");
+            btnNext.setOnClickListener(v -> {
+                Intent intent = new Intent(this, LessonDetailActivity.class);
+                intent.putExtra("CATEGORY", currentCategory);
+                intent.putExtra("LESSON_TITLE", nextLessonTitle);
+                startActivity(intent);
+                finish(); // Close current so we don't build a stack
+            });
+        } else {
+            // Last lesson or title not found
+            btnNext.setText("Start Quiz");
+            btnNext.setOnClickListener(v -> startQuiz());
+        }
+    }
+
+    private void startQuiz() {
+        Intent intent = new Intent(this, QuizPlayActivity.class);
+        intent.putExtra("COURSE_NAME", currentCategory);
+        startActivity(intent);
     }
 
     private void fetchLessonData(String category, String title) {
@@ -98,14 +160,6 @@ public class LessonDetailActivity extends AppCompatActivity {
                             if (tvOverviewText != null) tvOverviewText.setText(lesson.getOverview());
                             if (tvLearningPoints != null) tvLearningPoints.setText(lesson.getLearningPoints());
                             if (tvProgressPercent != null) tvProgressPercent.setText(lesson.getProgress());
-                            
-                            if (btnNext != null) {
-                                if ("100%".equals(lesson.getProgress())) {
-                                    btnNext.setText("Finish");
-                                } else {
-                                    btnNext.setText("Next");
-                                }
-                            }
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "Error parsing lesson: " + e.getMessage());

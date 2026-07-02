@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="brand_green">#39C782</color>
     <color name="grey_light">#BDBDBD</color>
+    <color name="profile_circle_bg">#98D8B1</color>
+    <color name="menu_item_bg">#E8F7F0</color>
 </resources>

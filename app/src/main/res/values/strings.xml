@@ -35,4 +35,11 @@
     <string name="score_format">%1$d/%2$d</string>
     <string name="avg_score_format">%1$d%%</string>
     <string name="progress_format">%1$d/%2$d (%3$d%%)</string>
+    <string name="profile_title">Profile</string>
+    <string name="user_name_placeholder">Name</string>
+    <string name="settings_label">Settings</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="log_out">Log out</string>
 </resources>
