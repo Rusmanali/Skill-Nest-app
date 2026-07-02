@@ -50,12 +50,10 @@ A multi-screen onboarding flow to introduce users to the platform:
   <tr>
     <td><img src="screenshots/progress.png" width="200" alt="Progress Tracking"></td>
     <td><img src="screenshots/profile.png" width="200" alt="User Profile"></td>
-    <td><img src="screenshots/dark_mode.png" width="200" alt="Dark Mode"></td>
   </tr>
   <tr>
     <td align="center">Progress</td>
     <td align="center">Profile</td>
-    <td align="center">Dark Mode</td>
   </tr>
 </table>
 
