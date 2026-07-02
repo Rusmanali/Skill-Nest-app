@@ -34,6 +34,33 @@ A multi-screen onboarding flow to introduce users to the platform:
 
 ---
 
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td><img src="screenshots/onboarding.png" width="200" alt="Onboarding"></td>
+    <td><img src="screenshots/home.png" width="200" alt="Home Screen"></td>
+    <td><img src="screenshots/quiz.png" width="200" alt="Quiz Screen"></td>
+  </tr>
+  <tr>
+    <td align="center">Onboarding</td>
+    <td align="center">Home Screen</td>
+    <td align="center">Quiz System</td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/progress.png" width="200" alt="Progress Tracking"></td>
+    <td><img src="screenshots/profile.png" width="200" alt="User Profile"></td>
+    <td><img src="screenshots/dark_mode.png" width="200" alt="Dark Mode"></td>
+  </tr>
+  <tr>
+    <td align="center">Progress</td>
+    <td align="center">Profile</td>
+    <td align="center">Dark Mode</td>
+  </tr>
+</table>
+
+---
+
 ## 🛠 Technical Architecture
 
 ### Tech Stack
